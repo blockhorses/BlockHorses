@@ -1,0 +1,19 @@
+{
+  "name": "cryptohorses",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "budo index.js:bundle.js --live --open"  
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "budo": "^11.6.0",
+    "choo": "^6.13.1"
+  }
+}
