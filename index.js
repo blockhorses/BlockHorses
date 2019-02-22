@@ -168,6 +168,7 @@ app.use(function (state) {
 
 // create a route
 app.route('/', main)
+app.route('/cryptohorses', main)
 
 // start app
 app.mount('div')
