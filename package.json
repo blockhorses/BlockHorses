@@ -8,12 +8,19 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "budo index.js:bundle.js --live --open"  
+    "dev": "budo index.js:bundle.js --live --open",
+    "build": "browserify index.js > bundle.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "choo": "^6.13.1",
+    "openzeppelin-solidity": "^2.1.2",
+    "truffle": "^5.0.4"
+  },
+  "devDependencies": {
+    "browserify": "^16.2.3",
     "budo": "^11.6.0",
-    "choo": "^6.13.1"
+    "uglify-js": "^3.4.9"
   }
 }
