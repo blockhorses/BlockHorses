@@ -3,9 +3,43 @@ var html = require('choo/html')
 
 // export module
 module.exports = function (horse) {
-    let poo
+    let type
+
+    if (horse.type == "Unicorn") {
+        type = html `    
+        <g id="unicorn" style="stroke:Yellow;">
+            <line x1="28" y1="10" x2="29" y2="10" />
+            <line x1="29" y1="9" x2="30" y2="9" />
+            <line x1="30" y1="8" x2="31" y2="8" />
+            <line x1="31" y1="7" x2="32" y2="7" />
+        </g>`
+    }
+
+    if (horse.type == "Winged") {
+        type = html `    
+        <g id="wings" style="stroke:Yellow;">
+            <line x1="15" y1="16" x2="17" y2="16" />
+            <line x1="14" y1="15" x2="16" y2="15" />
+            <line x1="14" y1="14" x2="16" y2="14" />
+            <line x1="11" y1="13" x2="16" y2="13" />
+            <line x1="10" y1="12" x2="16" y2="12" />
+            <line x1="9" y1="11" x2="15" y2="11" />
+            <line x1="7" y1="10" x2="15" y2="10" />
+            <line x1="6" y1="9" x2="14" y2="9" />
+            <line x1="5" y1="8" x2="13" y2="8" />
+            <line x1="4" y1="7" x2="5" y2="7" />
+            <line x1="6" y1="7" x2="12" y2="7" />
+            <line x1="5" y1="6" x2="11" y2="6" />
+            <line x1="4" y1="5" x2="5" y2="5" />
+            <line x1="6" y1="5" x2="10" y2="5" />
+            <line x1="5" y1="4" x2="8" y2="4" />
+            <line x1="4" y1="3" x2="5" y2="3" />
+            <line x1="6" y1="3" x2="7" y2="3" />
+        </g>`
+    }
+
     if (horse.type == "Poo") {
-        poo = html `    
+        type = html `    
         <g id="poo" style="stroke:brown;">
             <line x1="1" y1="31" x2="4" y2="31" />
             <line x1="2" y1="30" x2="3" y2="30" />
@@ -95,6 +129,6 @@ module.exports = function (horse) {
         <line x1="24" y1="9" x2="27" y2="9" />
         <line x1="24" y1="8" x2="26" y2="8" />
     </g>
-    ${poo}
+    ${type}
 </svg>`
 }
