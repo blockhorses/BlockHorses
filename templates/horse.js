@@ -2,16 +2,26 @@
 var html = require('choo/html')
 
 // export module
-module.exports = function (state, emit) {
+module.exports = function (horse) {
+    let poo
+    if (horse.type == "Poo") {
+        poo = html `    
+        <g id="poo" style="stroke:brown;">
+            <line x1="1" y1="31" x2="4" y2="31" />
+            <line x1="2" y1="30" x2="3" y2="30" />
+        </g>`
+    }
+    
+    
     return html `
     <svg xmlns="http://www.w3.org/2000/svg" height="128" width="128" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink">
     
-    <g id="shoes" style="stroke:${state.shoes};">
+    <g id="shoes" style="stroke:${horse.shoes};">
         <line x1="7" y1="31" x2="9" y2="31" />
         <line x1="18" y1="31" x2="20" y2="31" />
     </g>
 
-    <g id="horse" style="stroke:${state.color};">
+    <g id="horse" style="stroke:${horse.color};">
         <g id="backleg">
             <line x1="7" y1="30" x2="9" y2="30" />
             <line x1="7" y1="29" x2="9" y2="29" />
@@ -58,11 +68,11 @@ module.exports = function (state, emit) {
         </g>
     </g>
 
-    <g id="eye" style="stroke:${state.eye};">
+    <g id="eye" style="stroke:${horse.eye};">
         <line x1="26" y1="11" x2="27" y2="11" />
     </g>
     
-    <g id="tail" style="stroke:${state.tail};">
+    <g id="tail" style="stroke:${horse.tail};">
         <line x1="1" y1="23" x2="2" y2="23" />
         <line x1="0" y1="22" x2="2" y2="22" />
         <line x1="0" y1="21" x2="3" y2="21" />
@@ -74,7 +84,7 @@ module.exports = function (state, emit) {
         <line x1="3" y1="15" x2="7" y2="15" />
         <line x1="4" y1="14" x2="6" y2="14" />
     </g>
-    <g id="mane" style="stroke:${state.mane};">
+    <g id="mane" style="stroke:${horse.mane};">
         <line x1="18" y1="15" x2="19" y2="15" />
         <line x1="17" y1="14" x2="20" y2="14" />
         <line x1="18" y1="13" x2="21" y2="13" />
@@ -85,5 +95,6 @@ module.exports = function (state, emit) {
         <line x1="24" y1="9" x2="27" y2="9" />
         <line x1="24" y1="8" x2="26" y2="8" />
     </g>
+    ${poo}
 </svg>`
 }

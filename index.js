@@ -13,6 +13,7 @@ app.use(function (state) {
     state.horses = [
         {color: 'Red', mane: 'Black', tail: 'Violet', shoes: 'Blue', eye: 'Yellow', type: 'Normal'},
         {color: 'Orange', mane: 'Purple', tail: 'Green', shoes: 'Black', eye: 'Red', type: 'Normal'},
+        {color: 'Orange', mane: 'Purple', tail: 'Green', shoes: 'Black', eye: 'Red', type: 'Poo'},
         
 
         {color: 'AliceBlue', mane:'Black', tail: 'Black', shoes: 'Grey', eye: 'Purple', type: 'Normal'},
