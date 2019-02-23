@@ -4,7 +4,6 @@ var html = require('choo/html')
 // export module
 module.exports = function (state, emit) {
     return html `
-
     <svg xmlns="http://www.w3.org/2000/svg" height="128" width="128" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink">
     
     <g id="shoes" style="stroke:${state.shoes};">
@@ -85,11 +84,6 @@ module.exports = function (state, emit) {
         <line x1="25" y1="10" x2="28" y2="10" />
         <line x1="24" y1="9" x2="27" y2="9" />
         <line x1="24" y1="8" x2="26" y2="8" />
-    </g>
-
-    <g id="poo" style="stroke:brown;">
-        <line x1="1" y1="31" x2="4" y2="31" />
-        <line x1="2" y1="30" x2="3" y2="30" />
     </g>
 </svg>`
 }
