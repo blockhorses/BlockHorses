@@ -8,7 +8,7 @@ var horse = require('./horse.js')
 module.exports = function (state, emit) {
     return html `
     <div>
-        <h2>Horse</h2>
+        <h1>Block Horses</h1>
         ${state.horses.map(horse)}
     </div>`
 }
