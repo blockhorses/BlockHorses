@@ -74,7 +74,7 @@ contract BlockHorses is ERC165, ERC721, ERC721Enumerable, IERC721Metadata, Minte
    * @return string representing the base token URI
    */
   function baseTokenURI() public pure returns (string memory) {
-    return "https://abcoathup.github.io/BlockHorses/api";
+    return "https://abcoathup.github.io/BlockHorses/api/horse/";
   }
 
   /**

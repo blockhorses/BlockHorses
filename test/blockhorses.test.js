@@ -5,7 +5,9 @@ contract('BlockHorses', function([minter, anotherAccount]) {
   let horses
   let name = "BlockHorses";
   let symbol = "HORSE";
-  let baseTokenUri = "https://abcoathup.github.io/BlockHorses/api";
+  let baseTokenUri = "https://abcoathup.github.io/BlockHorses/api/horse/";
+  let tokenUri = baseTokenUri + "1";
+
 
   beforeEach(async function() {
     horses = await BlockHorses.new({ from: minter })
@@ -35,6 +37,8 @@ contract('BlockHorses', function([minter, anotherAccount]) {
       assert.equal(1, anotherAccountBalance);
       const _owner = await horses.ownerOf(1);
       assert.equal(anotherAccount, _owner);
+      const _tokenUri = await horses.tokenURI(1);
+      assert.equal(tokenUri, _tokenUri);
     });
     it('non-minter cannot mint a token', async function() {
       await shouldFail.reverting(horses.mint(anotherAccount, { from: anotherAccount }));
