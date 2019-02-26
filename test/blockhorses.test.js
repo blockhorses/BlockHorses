@@ -1,13 +1,13 @@
 const { BN, constants, expectEvent, shouldFail } = require('openzeppelin-test-helpers');
-const CryptoHorses = artifacts.require('CryptoHorses')
+const BlockHorses = artifacts.require('BlockHorses')
 
-contract('CryptoHorses', function([owner, anotherAccount]) {
+contract('BlockHorses', function([owner, anotherAccount]) {
   let horses
-  let name = "CryptoHorses";
+  let name = "BlockHorses";
   let symbol = "HORSE";
 
   beforeEach(async function() {
-    horses = await CryptoHorses.new({ from: owner })
+    horses = await BlockHorses.new({ from: owner })
   });
 
   describe('token details', function() {

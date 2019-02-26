@@ -170,7 +170,7 @@ app.use(function (state) {
 
 // create a route
 app.route('/', main)
-app.route('/CryptoHorses', main)
+app.route('/BlockHorses', main)
 
 // start app
 app.mount('div')

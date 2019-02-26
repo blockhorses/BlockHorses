@@ -11,9 +11,9 @@ import "openzeppelin-solidity/contracts/access/roles/MinterRole.sol";
  * Moreover, it includes approve all functionality using operator terminology
  * @dev see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
-contract CryptoHorses is ERC721, ERC721Enumerable, ERC721Metadata, MinterRole {
+contract BlockHorses is ERC721, ERC721Enumerable, ERC721Metadata, MinterRole {
 
-  constructor () public ERC721Metadata("CryptoHorses", "HORSE") {
+  constructor () public ERC721Metadata("BlockHorses", "HORSE") {
     // solhint-disable-previous-line no-empty-blocks
   }
 
