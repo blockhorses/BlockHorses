@@ -3,7 +3,7 @@
         "attributes": [
           {
             "trait_type": "color", 
-            "value": "Lavender"
+            "value": "Coral"
           }, 
           {
             "trait_type": "eyes", 
@@ -25,5 +25,5 @@
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/5.svg", 
-        "name": "Lavender Horse"
+        "name": "Coral Horse"
       }

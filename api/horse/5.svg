@@ -6,7 +6,7 @@
         <line x1="18" y1="31" x2="20" y2="31" />
     </g>
 
-    <g id="horse" style="stroke:Lavender;">
+    <g id="horse" style="stroke:Coral;">
         <g id="backleg">
             <line x1="7" y1="30" x2="9" y2="30" />
             <line x1="7" y1="29" x2="9" y2="29" />
