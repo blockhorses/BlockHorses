@@ -11,7 +11,7 @@
           }
         ], 
         "description": "Block Horse", 
-        "external_url": "https://abcoathup.github.io/BlockHorses/api/horses/12", 
-        "image": "https://abcoathup.github.io/BlockHorses/api/horses/12.svg", 
+        "external_url": "https://abcoathup.github.io/BlockHorses/api/horse/12", 
+        "image": "https://abcoathup.github.io/BlockHorses/api/horse/12.svg", 
         "name": "Horse #12"
       }

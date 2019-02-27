@@ -34,8 +34,8 @@ app.use(function (state) {
 // create a route
 app.route('/', main);
 app.route('/BlockHorses', main)
-app.route('/api/horses', main)
-
+app.route('/api/horse', main)
+app.route('/BlockHorses/api/horse', main)
 
 // start app
 app.mount('div')
@@ -3670,8 +3670,8 @@ module.exports = function (horse, number) {
           }
         ], 
         "description": "Block Horse", 
-        "external_url": "https://abcoathup.github.io/BlockHorses/api/horses/${number}", 
-        "image": "https://abcoathup.github.io/BlockHorses/api/horses/${number}.svg", 
+        "external_url": "https://abcoathup.github.io/BlockHorses/api/horse/${number}", 
+        "image": "https://abcoathup.github.io/BlockHorses/api/horse/${number}.svg", 
         "name": "Horse #${number}"
       }`
 }

@@ -16,8 +16,8 @@ module.exports = function (horse, number) {
           }
         ], 
         "description": "Block Horse", 
-        "external_url": "https://abcoathup.github.io/BlockHorses/api/horses/${number}", 
-        "image": "https://abcoathup.github.io/BlockHorses/api/horses/${number}.svg", 
+        "external_url": "https://abcoathup.github.io/BlockHorses/api/horse/${number}", 
+        "image": "https://abcoathup.github.io/BlockHorses/api/horse/${number}.svg", 
         "name": "Horse #${number}"
       }`
 }
