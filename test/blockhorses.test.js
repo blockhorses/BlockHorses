@@ -5,7 +5,7 @@ contract('BlockHorses', function([minter, anotherAccount]) {
   let horses
   let name = "BlockHorses";
   let symbol = "HORSE";
-  let baseTokenUri = "https://abcoathup.github.io/BlockHorses/api/horse/";
+  let baseTokenUri = "https://blockhorses.github.io/BlockHorses/api/horse/";
   let tokenUri = baseTokenUri + "1";
 
 
