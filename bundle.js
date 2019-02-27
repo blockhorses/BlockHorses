@@ -8,29 +8,40 @@ var app = choo()
 
 // import template
 var main = require('./templates/main.js')
-var apihorse = require('./templates/main.js')
+var horseapi = require('./templates/horseapi.js')
 
 app.use(function (state) {
     // initialize state
     state.horses = [
-        {color: 'Red', mane: 'Black', tail: 'Violet', shoes: 'Blue', eye: 'Yellow', type: 'Normal'},
-        {color: 'Orange', mane: 'Purple', tail: 'Green', shoes: 'Black', eye: 'Red', type: 'Normal'},
-        {color: 'Orange', mane: 'Purple', tail: 'Green', shoes: 'Black', eye: 'Red', type: 'Unicorn'},
-        {color: 'Orange', mane: 'Purple', tail: 'Green', shoes: 'Black', eye: 'Red', type: 'Winged'}
+        {color: 'Red', mane: 'Black', tail: 'Violet', shoes: 'Blue', eye: 'Yellow'},
+        {color: 'Orange', mane: 'Purple', tail: 'Green', shoes: 'Black', eye: 'Red'},
+        {color: 'SlateGrey', mane: 'Purple', tail: 'Green', shoes: 'Black', eye: 'Red'},
+        {color: 'Purple', mane: 'Purple', tail: 'Green', shoes: 'Black', eye: 'Red'},
+        {color: 'Fuchsia', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
+        {color: 'Red', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
+        {color: 'GoldenRod', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
+        {color: 'HoneyDew', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
+        {color: 'HotPink', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
+        {color: 'Indigo', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
+        {color: 'White', mane: 'White', tail: 'White', shoes: 'White', eye: 'White', unicorn: 'White', wings: 'White'},
+        {color: 'Gainsboro', mane: 'SlateGrey', tail: 'SlateGrey', shoes: 'Black', eye: 'Grey'},
+        {color: 'Lavender', mane: 'Purple', tail: 'Purple', shoes: 'Indigo', eye: 'Pink', unicorn: 'Gold', wings: 'GoldenRod'},
+        {color: 'Green', mane: 'Orange', tail: 'Red', shoes: 'Violet', eye: 'Blue', wings: 'Yellow'}
+        
     ]
 })
 
 // create a route
 app.route('/', main);
 app.route('/BlockHorses', main)
-app.route('/BlockHorses/test', main)
-app.route('/BlockHorses/api/horse/:horse', apihorse)
+app.route('/api/horses', main)
+
 
 // start app
 app.mount('div')
 
 
-},{"./templates/main.js":37,"choo":8,"choo/html":7}],2:[function(require,module,exports){
+},{"./templates/horseapi.js":37,"./templates/main.js":38,"choo":8,"choo/html":7}],2:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -3519,11 +3530,11 @@ var html = require('choo/html')
 
 // export module
 module.exports = function (horse) {
-    let type
-
-    if (horse.type == "Unicorn") {
-        type = html `    
-        <g id="unicorn" style="stroke:Yellow;">
+    let unicorn;
+    let wings;
+    if (typeof horse.unicorn !== 'undefined') {
+        unicorn = html `    
+        <g id="unicorn" style="stroke:${horse.unicorn};">
             <line x1="28" y1="10" x2="29" y2="10" />
             <line x1="29" y1="9" x2="30" y2="9" />
             <line x1="30" y1="8" x2="31" y2="8" />
@@ -3531,9 +3542,9 @@ module.exports = function (horse) {
         </g>`
     }
 
-    if (horse.type == "Winged") {
-        type = html `    
-        <g id="wings" style="stroke:Yellow;">
+    if (typeof horse.wings !== 'undefined') {
+        wings = html `    
+        <g id="wings" style="stroke:${horse.wings};">
             <line x1="15" y1="16" x2="17" y2="16" />
             <line x1="14" y1="15" x2="16" y2="15" />
             <line x1="14" y1="14" x2="16" y2="14" />
@@ -3553,15 +3564,6 @@ module.exports = function (horse) {
             <line x1="6" y1="3" x2="7" y2="3" />
         </g>`
     }
-
-    if (horse.type == "Poo") {
-        type = html `    
-        <g id="poo" style="stroke:brown;">
-            <line x1="1" y1="31" x2="4" y2="31" />
-            <line x1="2" y1="30" x2="3" y2="30" />
-        </g>`
-    }
-    
     
     return html `
     <svg xmlns="http://www.w3.org/2000/svg" height="128" width="128" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -3645,10 +3647,35 @@ module.exports = function (horse) {
         <line x1="24" y1="9" x2="27" y2="9" />
         <line x1="24" y1="8" x2="26" y2="8" />
     </g>
-    ${type}
+    ${unicorn}
+    ${wings}
 </svg>`
 }
 },{"choo/html":7}],37:[function(require,module,exports){
+// import choo's template helper
+var html = require('choo/html')
+
+// export module
+module.exports = function (horse, number) {
+    return html `
+    {
+        "attributes": [
+          {
+            "trait_type": "color", 
+            "value": "${horse.color}"
+          }, 
+          {
+            "trait_type": "eyes", 
+            "value": "${horse.eye}"
+          }
+        ], 
+        "description": "Block Horse", 
+        "external_url": "https://abcoathup.github.io/BlockHorses/api/horses/${number}", 
+        "image": "https://abcoathup.github.io/BlockHorses/api/horses/${number}.svg", 
+        "name": "Horse #${number}"
+      }`
+}
+},{"choo/html":7}],38:[function(require,module,exports){
 // import choo's template helper
 var html = require('choo/html')
 
