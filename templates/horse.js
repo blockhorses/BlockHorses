@@ -3,11 +3,11 @@ var html = require('choo/html')
 
 // export module
 module.exports = function (horse) {
-    let type
-
-    if (horse.type == "Unicorn") {
-        type = html `    
-        <g id="unicorn" style="stroke:Yellow;">
+    let unicorn;
+    let wings;
+    if (typeof horse.unicorn !== 'undefined') {
+        unicorn = html `    
+        <g id="unicorn" style="stroke:${horse.unicorn};">
             <line x1="28" y1="10" x2="29" y2="10" />
             <line x1="29" y1="9" x2="30" y2="9" />
             <line x1="30" y1="8" x2="31" y2="8" />
@@ -15,9 +15,9 @@ module.exports = function (horse) {
         </g>`
     }
 
-    if (horse.type == "Winged") {
-        type = html `    
-        <g id="wings" style="stroke:Yellow;">
+    if (typeof horse.wings !== 'undefined') {
+        wings = html `    
+        <g id="wings" style="stroke:${horse.wings};">
             <line x1="15" y1="16" x2="17" y2="16" />
             <line x1="14" y1="15" x2="16" y2="15" />
             <line x1="14" y1="14" x2="16" y2="14" />
@@ -37,15 +37,6 @@ module.exports = function (horse) {
             <line x1="6" y1="3" x2="7" y2="3" />
         </g>`
     }
-
-    if (horse.type == "Poo") {
-        type = html `    
-        <g id="poo" style="stroke:brown;">
-            <line x1="1" y1="31" x2="4" y2="31" />
-            <line x1="2" y1="30" x2="3" y2="30" />
-        </g>`
-    }
-    
     
     return html `
     <svg xmlns="http://www.w3.org/2000/svg" height="128" width="128" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -129,6 +120,7 @@ module.exports = function (horse) {
         <line x1="24" y1="9" x2="27" y2="9" />
         <line x1="24" y1="8" x2="26" y2="8" />
     </g>
-    ${type}
+    ${unicorn}
+    ${wings}
 </svg>`
 }
