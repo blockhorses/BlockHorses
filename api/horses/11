@@ -1,0 +1,17 @@
+
+    {
+        "attributes": [
+          {
+            "trait_type": "color", 
+            "value": "White"
+          }, 
+          {
+            "trait_type": "eyes", 
+            "value": "White"
+          }
+        ], 
+        "description": "Block Horse", 
+        "external_url": "https://abcoathup.github.io/BlockHorses/api/horses/11", 
+        "image": "https://abcoathup.github.io/BlockHorses/api/horses/11.svg", 
+        "name": "Horse #11"
+      }

@@ -2,10 +2,22 @@
 var html = require('choo/html')
 
 // export module
-module.exports = function (state, emit) {
+module.exports = function (horse, number) {
     return html `
-    <div>
-        <h1>Block Horses</h1>
-        
-    </div>`
+    {
+        "attributes": [
+          {
+            "trait_type": "color", 
+            "value": "${horse.color}"
+          }, 
+          {
+            "trait_type": "eyes", 
+            "value": "${horse.eye}"
+          }
+        ], 
+        "description": "Block Horse", 
+        "external_url": "https://abcoathup.github.io/BlockHorses/api/horses/${number}", 
+        "image": "https://abcoathup.github.io/BlockHorses/api/horses/${number}.svg", 
+        "name": "Horse #${number}"
+      }`
 }
