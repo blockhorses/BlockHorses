@@ -3667,12 +3667,24 @@ module.exports = function (horse, number) {
           {
             "trait_type": "eyes", 
             "value": "${horse.eye}"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "${horse.mane}"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "${horse.tail}"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "${horse.shoes}"
           }
         ], 
         "description": "Block Horse", 
-        "external_url": "https://abcoathup.github.io/BlockHorses/api/horse/${number}", 
-        "image": "https://abcoathup.github.io/BlockHorses/api/horse/${number}.svg", 
-        "name": "Horse #${number}"
+        "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
+        "image": "https://blockhorses.github.io/BlockHorses/api/horse/${number}.svg", 
+        "name": "${horse.color} Horse"
       }`
 }
 },{"choo/html":7}],38:[function(require,module,exports){
