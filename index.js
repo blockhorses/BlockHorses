@@ -33,8 +33,8 @@ app.use(function (state) {
 // create a route
 app.route('/', main);
 app.route('/BlockHorses', main)
-app.route('/api/horses', main)
-
+app.route('/api/horse', main)
+app.route('/BlockHorses/api/horse', main)
 
 // start app
 app.mount('div')
