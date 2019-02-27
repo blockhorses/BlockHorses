@@ -3,19 +3,19 @@
         "attributes": [
           {
             "trait_type": "color", 
-            "value": "Orange"
+            "value": "DimGrey"
           }, 
           {
             "trait_type": "eyes", 
-            "value": "Red"
+            "value": "Grey"
           },
           {
             "trait_type": "mane", 
-            "value": "Purple"
+            "value": "Black"
           },
           {
             "trait_type": "tail", 
-            "value": "Green"
+            "value": "Black"
           },
           {
             "trait_type": "shoes", 
@@ -25,5 +25,5 @@
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/2.svg", 
-        "name": "Orange Horse"
+        "name": "DimGrey Horse"
       }

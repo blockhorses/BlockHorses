@@ -3,19 +3,19 @@
         "attributes": [
           {
             "trait_type": "color", 
-            "value": "Purple"
+            "value": "DarkBlue"
           }, 
           {
             "trait_type": "eyes", 
-            "value": "Red"
+            "value": "Blue"
           },
           {
             "trait_type": "mane", 
-            "value": "Purple"
+            "value": "DarkSlateGrey"
           },
           {
             "trait_type": "tail", 
-            "value": "Green"
+            "value": "DarkSlateGrey"
           },
           {
             "trait_type": "shoes", 
@@ -25,5 +25,5 @@
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/4.svg", 
-        "name": "Purple Horse"
+        "name": "DarkBlue Horse"
       }

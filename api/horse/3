@@ -3,11 +3,11 @@
         "attributes": [
           {
             "trait_type": "color", 
-            "value": "SlateGrey"
+            "value": "Lavender"
           }, 
           {
             "trait_type": "eyes", 
-            "value": "Red"
+            "value": "Pink"
           },
           {
             "trait_type": "mane", 
@@ -15,15 +15,15 @@
           },
           {
             "trait_type": "tail", 
-            "value": "Green"
+            "value": "Purple"
           },
           {
             "trait_type": "shoes", 
-            "value": "Black"
+            "value": "Indigo"
           }
         ], 
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/3.svg", 
-        "name": "SlateGrey Horse"
+        "name": "Lavender Horse"
       }

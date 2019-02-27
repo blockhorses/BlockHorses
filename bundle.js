@@ -8,27 +8,12 @@ var app = choo()
 
 // import template
 var main = require('./templates/main.js')
-var horseapi = require('./templates/horseapi.js')
+var horsesList = require('./templates/horses.js')
+
 
 app.use(function (state) {
     // initialize state
-    state.horses = [
-        {color: 'Red', mane: 'Black', tail: 'Violet', shoes: 'Blue', eye: 'Yellow'},
-        {color: 'Orange', mane: 'Purple', tail: 'Green', shoes: 'Black', eye: 'Red'},
-        {color: 'SlateGrey', mane: 'Purple', tail: 'Green', shoes: 'Black', eye: 'Red'},
-        {color: 'Purple', mane: 'Purple', tail: 'Green', shoes: 'Black', eye: 'Red'},
-        {color: 'Fuchsia', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
-        {color: 'Red', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
-        {color: 'GoldenRod', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
-        {color: 'HoneyDew', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
-        {color: 'HotPink', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
-        {color: 'Indigo', mane: 'Black', tail: 'Black', shoes: 'Blue', eye: 'Purple'},
-        {color: 'White', mane: 'White', tail: 'White', shoes: 'White', eye: 'White', unicorn: 'White', wings: 'White'},
-        {color: 'Gainsboro', mane: 'SlateGrey', tail: 'SlateGrey', shoes: 'Black', eye: 'Grey'},
-        {color: 'Lavender', mane: 'Purple', tail: 'Purple', shoes: 'Indigo', eye: 'Pink', unicorn: 'Gold', wings: 'GoldenRod'},
-        {color: 'Green', mane: 'Orange', tail: 'Red', shoes: 'Violet', eye: 'Blue', wings: 'Yellow'}
-        
-    ]
+    state.horses = horsesList()
 })
 
 // create a route
@@ -41,7 +26,7 @@ app.route('/BlockHorses/api/horse', main)
 app.mount('div')
 
 
-},{"./templates/horseapi.js":37,"./templates/main.js":38,"choo":8,"choo/html":7}],2:[function(require,module,exports){
+},{"./templates/horses.js":37,"./templates/main.js":38,"choo":8,"choo/html":7}],2:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -3652,42 +3637,17 @@ module.exports = function (horse) {
 </svg>`
 }
 },{"choo/html":7}],37:[function(require,module,exports){
-// import choo's template helper
-var html = require('choo/html')
+module.exports = function () {
 
-// export module
-module.exports = function (horse, number) {
-    return html `
-    {
-        "attributes": [
-          {
-            "trait_type": "color", 
-            "value": "${horse.color}"
-          }, 
-          {
-            "trait_type": "eyes", 
-            "value": "${horse.eye}"
-          },
-          {
-            "trait_type": "mane", 
-            "value": "${horse.mane}"
-          },
-          {
-            "trait_type": "tail", 
-            "value": "${horse.tail}"
-          },
-          {
-            "trait_type": "shoes", 
-            "value": "${horse.shoes}"
-          }
-        ], 
-        "description": "Block Horse", 
-        "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
-        "image": "https://blockhorses.github.io/BlockHorses/api/horse/${number}.svg", 
-        "name": "${horse.color} Horse"
-      }`
+    return horses = [
+        {color: 'White', mane: 'White', tail: 'White', shoes: 'White', eye: 'White', unicorn: 'White', wings: 'White'},
+        {color: 'DimGrey', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Grey'},
+        {color: 'Lavender', mane: 'Purple', tail: 'Purple', shoes: 'Indigo', eye: 'Pink', unicorn: 'Gold', wings: 'GoldenRod'},
+        {color: 'DarkBlue', mane: 'DarkSlateGrey', tail: 'DarkSlateGrey', shoes: 'Black', eye: 'Blue', wings: 'Yellow'}       
+     
+    ]
 }
-},{"choo/html":7}],38:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 // import choo's template helper
 var html = require('choo/html')
 
