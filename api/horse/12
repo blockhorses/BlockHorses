@@ -8,10 +8,22 @@
           {
             "trait_type": "eyes", 
             "value": "Grey"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "SlateGrey"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "SlateGrey"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "Black"
           }
         ], 
         "description": "Block Horse", 
-        "external_url": "https://abcoathup.github.io/BlockHorses/api/horse/12", 
+        "external_url": "https://abcoathup.github.io/BlockHorses/api/horse", 
         "image": "https://abcoathup.github.io/BlockHorses/api/horse/12.svg", 
-        "name": "Horse #12"
+        "name": "Gainsboro Horse"
       }

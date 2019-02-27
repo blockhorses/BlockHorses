@@ -8,10 +8,22 @@
           {
             "trait_type": "eyes", 
             "value": "Blue"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "Orange"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "Red"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "Violet"
           }
         ], 
         "description": "Block Horse", 
-        "external_url": "https://abcoathup.github.io/BlockHorses/api/horse/14", 
+        "external_url": "https://abcoathup.github.io/BlockHorses/api/horse", 
         "image": "https://abcoathup.github.io/BlockHorses/api/horse/14.svg", 
-        "name": "Horse #14"
+        "name": "Green Horse"
       }

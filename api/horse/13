@@ -8,10 +8,22 @@
           {
             "trait_type": "eyes", 
             "value": "Pink"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "Purple"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "Purple"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "Indigo"
           }
         ], 
         "description": "Block Horse", 
-        "external_url": "https://abcoathup.github.io/BlockHorses/api/horse/13", 
+        "external_url": "https://abcoathup.github.io/BlockHorses/api/horse", 
         "image": "https://abcoathup.github.io/BlockHorses/api/horse/13.svg", 
-        "name": "Horse #13"
+        "name": "Lavender Horse"
       }
