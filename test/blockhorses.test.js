@@ -40,6 +40,24 @@ contract('BlockHorses', function([minter, anotherAccount]) {
       const _tokenUri = await horses.tokenURI(1);
       assert.equal(tokenUri, _tokenUri);
     });
+
+    it('mint multiple tokens', async function() {
+      for (var i=0; i < 10; i++) {
+        await horses.mint(anotherAccount);
+      }
+      
+      const _totalSupply = await horses.totalSupply();
+      assert.equal(10, _totalSupply);
+      const minterBalance = await horses.balanceOf(minter);
+      assert.equal(0, minterBalance);
+      anotherAccountBalance = await horses.balanceOf(anotherAccount);
+      assert.equal(10, anotherAccountBalance);
+      const _owner = await horses.ownerOf(10);
+      assert.equal(anotherAccount, _owner);
+      const _tokenUri = await horses.tokenURI(1);
+      assert.equal(tokenUri, _tokenUri);
+    });
+
     it('non-minter cannot mint a token', async function() {
       await shouldFail.reverting(horses.mint(anotherAccount, { from: anotherAccount }));
     })
