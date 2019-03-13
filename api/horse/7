@@ -3,11 +3,11 @@
         "attributes": [
           {
             "trait_type": "color", 
-            "value": "GoldenRod"
+            "value": "Orange"
           }, 
           {
             "trait_type": "eyes", 
-            "value": "Purple"
+            "value": "Pink"
           },
           {
             "trait_type": "mane", 
@@ -19,11 +19,11 @@
           },
           {
             "trait_type": "shoes", 
-            "value": "Blue"
+            "value": "Black"
           }
         ], 
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/7.svg", 
-        "name": "GoldenRod Horse"
+        "name": "Orange Horse"
       }

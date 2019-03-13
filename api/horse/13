@@ -3,7 +3,7 @@
         "attributes": [
           {
             "trait_type": "color", 
-            "value": "Lavender"
+            "value": "Ivory"
           }, 
           {
             "trait_type": "eyes", 
@@ -11,19 +11,19 @@
           },
           {
             "trait_type": "mane", 
-            "value": "Purple"
+            "value": "DarkViolet"
           },
           {
             "trait_type": "tail", 
-            "value": "Purple"
+            "value": "DarkViolet"
           },
           {
             "trait_type": "shoes", 
-            "value": "Indigo"
+            "value": "Black"
           }
         ], 
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/13.svg", 
-        "name": "Lavender Horse"
+        "name": "Ivory Horse"
       }

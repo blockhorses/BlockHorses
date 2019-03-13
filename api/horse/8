@@ -3,11 +3,11 @@
         "attributes": [
           {
             "trait_type": "color", 
-            "value": "HoneyDew"
+            "value": "DarkCyan"
           }, 
           {
             "trait_type": "eyes", 
-            "value": "Purple"
+            "value": "Pink"
           },
           {
             "trait_type": "mane", 
@@ -19,11 +19,11 @@
           },
           {
             "trait_type": "shoes", 
-            "value": "Blue"
+            "value": "Black"
           }
         ], 
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/8.svg", 
-        "name": "HoneyDew Horse"
+        "name": "DarkCyan Horse"
       }

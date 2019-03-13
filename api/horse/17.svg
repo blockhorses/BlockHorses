@@ -6,7 +6,7 @@
         <line x1="18" y1="31" x2="20" y2="31" />
     </g>
 
-    <g id="horse" style="stroke:DarkCyan;">
+    <g id="horse" style="stroke:Aquamarine;">
         <g id="backleg">
             <line x1="7" y1="30" x2="9" y2="30" />
             <line x1="7" y1="29" x2="9" y2="29" />
@@ -80,12 +80,6 @@
         <line x1="24" y1="9" x2="27" y2="9" />
         <line x1="24" y1="8" x2="26" y2="8" />
     </g>
-        
-        <g id="unicorn" style="stroke:GoldenRod;">
-            <line x1="28" y1="10" x2="29" y2="10" />
-            <line x1="29" y1="9" x2="30" y2="9" />
-            <line x1="30" y1="8" x2="31" y2="8" />
-            <line x1="31" y1="7" x2="32" y2="7" />
-        </g>
+    
     
 </svg>

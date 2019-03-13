@@ -3,7 +3,7 @@
         "attributes": [
           {
             "trait_type": "color", 
-            "value": "Indigo"
+            "value": "Chocolate"
           }, 
           {
             "trait_type": "eyes", 
@@ -24,6 +24,6 @@
         ], 
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
-        "image": "https://blockhorses.github.io/BlockHorses/api/horse/14.svg", 
-        "name": "Indigo Horse"
+        "image": "https://blockhorses.github.io/BlockHorses/api/horse/27.svg", 
+        "name": "Chocolate Horse"
       }

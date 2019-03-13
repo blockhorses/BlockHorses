@@ -3,27 +3,27 @@
         "attributes": [
           {
             "trait_type": "color", 
-            "value": "White"
+            "value": "CornSilk"
           }, 
           {
             "trait_type": "eyes", 
-            "value": "White"
+            "value": "Pink"
           },
           {
             "trait_type": "mane", 
-            "value": "White"
+            "value": "Grey"
           },
           {
             "trait_type": "tail", 
-            "value": "White"
+            "value": "Grey"
           },
           {
             "trait_type": "shoes", 
-            "value": "White"
+            "value": "Grey"
           }
         ], 
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/11.svg", 
-        "name": "White Horse"
+        "name": "CornSilk Horse"
       }

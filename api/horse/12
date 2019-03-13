@@ -3,19 +3,19 @@
         "attributes": [
           {
             "trait_type": "color", 
-            "value": "Gainsboro"
+            "value": "Azure"
           }, 
           {
             "trait_type": "eyes", 
-            "value": "Grey"
+            "value": "Pink"
           },
           {
             "trait_type": "mane", 
-            "value": "SlateGrey"
+            "value": "Black"
           },
           {
             "trait_type": "tail", 
-            "value": "SlateGrey"
+            "value": "Black"
           },
           {
             "trait_type": "shoes", 
@@ -25,5 +25,5 @@
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/12.svg", 
-        "name": "Gainsboro Horse"
+        "name": "Azure Horse"
       }
