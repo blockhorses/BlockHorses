@@ -3650,7 +3650,7 @@ module.exports = function () {
         {color: 'DarkCyan', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink', unicorn: 'GoldenRod'} , // AMC
         {color: 'DeepPink', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'} , // S
         {color: 'AliceBlue ', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'} , // K
-        {color: 'CornSilk', mane: 'Grey', tail: 'Grey', shoes: 'Grey', eye: 'Pink', wings: 'GoldenRod'} , // SF 
+        {color: 'CornSilk', mane: 'Grey', tail: 'Grey', shoes: 'Grey', eye: 'Pink', unicorn: 'GoldenRod'} , // SF 
         {color: 'Azure', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'} , // X
         {color: 'Ivory', mane: 'DarkViolet', tail: 'DarkViolet', shoes: 'Black', eye: 'Pink'} , // T
         {color: 'Indigo', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},  // A
