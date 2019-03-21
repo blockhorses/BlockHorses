@@ -3700,10 +3700,18 @@ module.exports = function (state, emit) {
     return html `
     <div>
    
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+    </nav>
+    
     <!-- Top menu on small screens -->
     <header class="w3-container w3-top w3-white w3-xlarge w3-padding-16">
-      <span class="w3-left w3-padding">BLOCK HORSES</span>
+      <span class="w3-left w3-padding">SOME NAME</span>
+      <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
     </header>
+    
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
     
     <!-- !PAGE CONTENT! -->
     <div class="w3-main w3-content" style="max-width:1600px;margin-top:83px">
