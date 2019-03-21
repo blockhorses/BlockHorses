@@ -8,10 +8,10 @@ module.exports = function (horse) {
     if (typeof horse.unicorn !== 'undefined') {
         unicorn = html `    
         <g id="unicorn" style="stroke:${horse.unicorn};">
-            <line x1="28" y1="10" x2="29" y2="10" />
-            <line x1="29" y1="9" x2="30" y2="9" />
-            <line x1="30" y1="8" x2="31" y2="8" />
-            <line x1="31" y1="7" x2="32" y2="7" />
+            <line x1="27" y1="9" x2="28" y2="9" />
+            <line x1="28" y1="8" x2="29" y2="8" />
+            <line x1="29" y1="7" x2="30" y2="7" />
+            <line x1="30" y1="6" x2="31" y2="6" />
         </g>`
     }
 
