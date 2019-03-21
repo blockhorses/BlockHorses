@@ -26,7 +26,7 @@ app.route('/BlockHorses/api/horse', main)
 app.mount('div')
 
 
-},{"./templates/horses.js":37,"./templates/main.js":38,"choo":8,"choo/html":7}],2:[function(require,module,exports){
+},{"./templates/horses.js":38,"./templates/main.js":39,"choo":8,"choo/html":7}],2:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -3520,10 +3520,10 @@ module.exports = function (horse) {
     if (typeof horse.unicorn !== 'undefined') {
         unicorn = html `    
         <g id="unicorn" style="stroke:${horse.unicorn};">
-            <line x1="28" y1="10" x2="29" y2="10" />
-            <line x1="29" y1="9" x2="30" y2="9" />
-            <line x1="30" y1="8" x2="31" y2="8" />
-            <line x1="31" y1="7" x2="32" y2="7" />
+            <line x1="27" y1="9" x2="28" y2="9" />
+            <line x1="28" y1="8" x2="29" y2="8" />
+            <line x1="29" y1="7" x2="30" y2="7" />
+            <line x1="30" y1="6" x2="31" y2="6" />
         </g>`
     }
 
@@ -3637,6 +3637,18 @@ module.exports = function (horse) {
 </svg>`
 }
 },{"choo/html":7}],37:[function(require,module,exports){
+var html = require('choo/html')
+
+var horseSvg = require('./horse.js')
+
+// export module
+module.exports = function (horse, index, horses) {
+    return html `
+    ${horseSvg(horse)}
+    
+    `;
+}
+},{"./horse.js":36,"choo/html":7}],38:[function(require,module,exports){
 module.exports = function () {
 
     return horses = [
@@ -3676,19 +3688,66 @@ module.exports = function () {
         
     ]
 }
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 // import choo's template helper
 var html = require('choo/html')
 
 // import template
-var horse = require('./horse.js')
+var horse = require('./horseTemplate.js')
 
 // export module
 module.exports = function (state, emit) {
     return html `
     <div>
-        <h1>Block Horses</h1>
+   
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-white w3-xlarge w3-padding-16">
+      <span class="w3-left w3-padding">BLOCK HORSES</span>
+    </header>
+    
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main w3-content" style="max-width:1600px;margin-top:83px">
+      
+      <!-- Photo grid -->
+      <div class="w3-row w3-grayscale-min">
+        <div>
         ${state.horses.map(horse)}
+        </div>
+
+       
+      </div>
+    
+      
+      <!-- Modal for full size images on click-->
+      <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+        <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+        <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+          <img id="img01" class="w3-image">
+          <p id="caption"></p>
+        </div>
+      </div>
+    
+      <!-- About section -->
+      <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
+        <img src="../api/horse/7.svg" alt="BlockHorse" class="w3-image w3-padding-32" width="150" height="150">
+        <div class="w3-content w3-justify" style="max-width:600px">
+          <h4>Block Horses</h4>
+          <p>A whole field of ponies.
+          </p>
+          <hr class="w3-opacity">
+    
+          
+        </div>
+      </div>
+    
+   
+     
+      <div class="w3-black w3-center w3-padding-24">Standing on the shoulders of giants; Thanks Ethereum, OpenZeppelin, Truffle, Infura, MetaMask</div>
+    
+    <!-- End page content -->
+    </div>
+   
+    
     </div>`
 }
-},{"./horse.js":36,"choo/html":7}]},{},[1]);
+},{"./horseTemplate.js":37,"choo/html":7}]},{},[1]);
