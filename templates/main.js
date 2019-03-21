@@ -38,7 +38,7 @@ module.exports = function (state, emit) {
     
       <!-- About section -->
       <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
-        <img src="7.svg" alt="BlockHorse" class="w3-image w3-padding-32" width="150" height="150">
+        <img src="./api/horse/7.svg" alt="BlockHorse" class="w3-image w3-padding-32" width="150" height="150">
         <div class="w3-content w3-justify" style="max-width:600px">
           <h4>Block Horses</h4>
           <p>A whole field of ponies.
