@@ -1,0 +1,29 @@
+
+    {
+        "attributes": [
+          {
+            "trait_type": "color", 
+            "value": "Brown"
+          }, 
+          {
+            "trait_type": "eyes", 
+            "value": "Red"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "Gold"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "Green"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "Black"
+          }
+        ], 
+        "description": "Block Horse", 
+        "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
+        "image": "https://blockhorses.github.io/BlockHorses/api/horse/34.svg", 
+        "name": "Brown Horse"
+      }
