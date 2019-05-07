@@ -1,0 +1,29 @@
+
+    {
+        "attributes": [
+          {
+            "trait_type": "color", 
+            "value": "Aquamarine"
+          }, 
+          {
+            "trait_type": "eyes", 
+            "value": "Grey"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "CornSilk"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "CornSilk"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "GoldenRod"
+          }
+        ], 
+        "description": "Block Horse", 
+        "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
+        "image": "https://blockhorses.github.io/BlockHorses/api/horse/35.svg", 
+        "name": "Aquamarine Horse"
+      }

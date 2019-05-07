@@ -12,7 +12,7 @@ horses.forEach(generateJSON)
 function generateSVG(item, index) {
     var data = horse(item);
 
-    fs.writeFile((index + 1) + '.svg', data, function(err, data){
+    fs.writeFile('api/horse/' + (index + 1) + '.svg', data, function(err, data){
         if (err) console.log(err);
         console.log("Generated SVG");
     });
@@ -22,7 +22,7 @@ function generateSVG(item, index) {
 function generateJSON(item, index) {
     var data = horseJSON(item, index + 1);
 
-    fs.writeFile((index + 1) + "", data, function(err, data){
+    fs.writeFile('api/horse/' + (index + 1) + "", data, function(err, data){
         if (err) console.log(err);
         console.log("Generated JSON");
     });

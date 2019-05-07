@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "budo index.js:bundle.js --live --open",
-    "build": "browserify index.js > bundle.js"
+    "build": "browserify index.js > bundle.js",
+    "generate": "node api/horse/generate.js"
   },
   "author": "",
   "license": "ISC",

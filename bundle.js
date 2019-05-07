@@ -3517,6 +3517,59 @@ var html = require('choo/html')
 module.exports = function (horse) {
     let unicorn;
     let wings;
+    let zebra;
+
+    if (typeof horse.zebra !== 'undefined') {
+        zebra = html `    
+        <g id="unicorn" style="stroke:${horse.zebra};">
+            <g id="backleg">
+                
+                <line x1="7" y1="29" x2="9" y2="29" />
+                
+                <line x1="7" y1="27" x2="9" y2="27" />
+                
+                <line x1="7" y1="25" x2="9" y2="25" />
+                
+                <line x1="6" y1="23" x2="10" y2="23" />
+            </g>
+            <g id="frontleg">
+                
+                <line x1="18" y1="29" x2="20" y2="29" />
+                
+                <line x1="18" y1="27" x2="20" y2="27" />
+                
+                <line x1="18" y1="25" x2="20" y2="25" />
+                
+                <line x1="17" y1="23" x2="21" y2="23" />
+            </g>
+
+            <g id="core">
+                <line x1="6" y1="22" x2="21" y2="22" />
+                <line x1="5" y1="21" x2="22" y2="21" />
+                <line x1="5" y1="20" x2="22" y2="20" />
+                <line x1="5" y1="19" x2="22" y2="19" />
+                <line x1="5" y1="18" x2="22" y2="18" />
+                <line x1="5" y1="17" x2="22" y2="17" />
+                <line x1="6" y1="16" x2="23" y2="16" />
+                <line x1="8" y1="15" x2="24" y2="15" />
+                <line x1="20" y1="14" x2="25" y2="14" />
+            </g>
+            <g id="head">
+                <line x1="28" y1="15" x2="30" y2="15" />
+                <line x1="29" y1="14" x2="31" y2="14" />
+                <line x1="30" y1="13" x2="31" y2="13" />
+                
+            </g>
+        <g id="ear">
+            <line x1="22" y1="9" x2="24" y2="9" />
+            <line x1="22" y1="8" x2="23" y2="8" />
+        </g>
+
+        </g>`
+
+
+    }
+
     if (typeof horse.unicorn !== 'undefined') {
         unicorn = html `    
         <g id="unicorn" style="stroke:${horse.unicorn};">
@@ -3634,6 +3687,7 @@ module.exports = function (horse) {
     </g>
     ${unicorn}
     ${wings}
+    ${zebra}
 </svg>`
 }
 },{"choo/html":7}],37:[function(require,module,exports){
@@ -3685,7 +3739,8 @@ module.exports = function () {
         {color: 'DarkBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
         {color: 'DarkCyan', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
         {color: 'DarkGoldenRod', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
-        {color: 'Brown', mane: 'Gold', tail: 'Green', shoes: 'Black', eye: 'Red'}
+        {color: 'Brown', mane: 'Gold', tail: 'Green', shoes: 'Black', eye: 'Red'},
+        {color: 'Aquamarine', mane: 'CornSilk', tail: 'CornSilk', shoes: 'GoldenRod', eye: 'Grey', unicorn: 'GoldenRod', wings: 'GoldenRod'}
         
     ]
 }

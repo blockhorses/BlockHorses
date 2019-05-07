@@ -34,7 +34,8 @@ module.exports = function () {
         {color: 'DarkBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
         {color: 'DarkCyan', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
         {color: 'DarkGoldenRod', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
-        {color: 'Brown', mane: 'Gold', tail: 'Green', shoes: 'Black', eye: 'Red'}
+        {color: 'Brown', mane: 'Gold', tail: 'Green', shoes: 'Black', eye: 'Red'},
+        {color: 'Aquamarine', mane: 'CornSilk', tail: 'CornSilk', shoes: 'GoldenRod', eye: 'Grey', unicorn: 'GoldenRod', wings: 'GoldenRod'}
         
     ]
 }
