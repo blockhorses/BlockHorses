@@ -23,7 +23,7 @@
           }
         ], 
         "description": "Block Horse", 
-        "external_url": "https://blockhorses.github.io/BlockHorses/api/horse", 
+        "external_url": "https://blockhorses.github.io/BlockHorses", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/8.svg", 
         "name": "DarkCyan Horse"
       }
