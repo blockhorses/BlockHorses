@@ -13,7 +13,7 @@
     "generate": "node api/horse/generate.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "choo": "^6.13.1",
     "openzeppelin-solidity": "^2.1.2",
