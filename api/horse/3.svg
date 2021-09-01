@@ -1,6 +1,11 @@
 
     <svg xmlns="http://www.w3.org/2000/svg" height="128" width="128" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink">
     
+    <!--
+        Copyright 2019 Andrew B Coathup https://github.com/abcoathup
+        BlockHorses https://github.com/blockhorses/BlockHorses
+    -->
+
     <g id="shoes" style="stroke:Indigo;">
         <line x1="7" y1="31" x2="9" y2="31" />
         <line x1="18" y1="31" x2="20" y2="31" />
