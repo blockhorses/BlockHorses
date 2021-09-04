@@ -3,6 +3,19 @@ var html = require('choo/html')
 
 // export module
 module.exports = function (horse, number) {
+
+  var horseName = 'Horse'
+
+  if (typeof horse.unicorn !== 'undefined' && typeof horse.wings !== 'undefined') {
+    horseName = 'Winged Unicorn'
+  }
+  else if (typeof horse.wings !== 'undefined') {
+    horseName = 'Pegasus'
+  } 
+  else if (typeof horse.wings !== 'undefined') {
+    horseName = 'Unicorn'
+  } 
+
     return html `
     {
         "attributes": [
@@ -30,6 +43,6 @@ module.exports = function (horse, number) {
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/${number}.svg", 
-        "name": "${horse.color} Horse"
+        "name": "${horse.color} ${horseName}"
       }`
 }

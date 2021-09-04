@@ -35,7 +35,16 @@ module.exports = function () {
         {color: 'DarkCyan', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
         {color: 'DarkGoldenRod', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
         {color: 'Brown', mane: 'Gold', tail: 'Green', shoes: 'Black', eye: 'Red'},
-        {color: 'Aquamarine', mane: 'CornSilk', tail: 'CornSilk', shoes: 'GoldenRod', eye: 'Grey', unicorn: 'GoldenRod', wings: 'GoldenRod'}
-        
+        {color: 'Aquamarine', mane: 'CornSilk', tail: 'CornSilk', shoes: 'GoldenRod', eye: 'Grey', unicorn: 'GoldenRod', wings: 'GoldenRod'},
+        {color: 'AliceBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+        {color: 'Pink', mane: 'DeepPink', tail: 'DeepPink', shoes: 'PaleVioletRed', eye: 'MediumSlateBlue', unicorn: 'HotPink', wings: 'MediumVioletRed'},
+        {color: 'Black', mane: 'DimGrey', tail: 'DimGrey', shoes: 'DimGrey', eye: 'Yellow'},
+        {color: 'DarkGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+        {color: 'DarkGrey', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink', unicorn: 'GoldenRod'},
+        {color: 'DarkKhaki', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+        {color: 'DarkMagenta', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+        {color: 'DarkOliveGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+        {color: 'DarkOrange', mane: 'Brown', tail: 'Brown', shoes: 'Black', eye: 'Pink'},
+        {color: 'DarkOrchid', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'}       
     ]
 }
