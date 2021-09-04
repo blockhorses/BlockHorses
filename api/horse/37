@@ -3,27 +3,27 @@
         "attributes": [
           {
             "trait_type": "color", 
-            "value": "DarkBlue"
+            "value": "Pink"
           }, 
           {
             "trait_type": "eyes", 
-            "value": "Blue"
+            "value": "MediumSlateBlue"
           },
           {
             "trait_type": "mane", 
-            "value": "DarkSlateGrey"
+            "value": "DeepPink"
           },
           {
             "trait_type": "tail", 
-            "value": "DarkSlateGrey"
+            "value": "DeepPink"
           },
           {
             "trait_type": "shoes", 
-            "value": "Black"
+            "value": "PaleVioletRed"
           }
         ], 
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses", 
-        "image": "https://blockhorses.github.io/BlockHorses/api/horse/4.svg", 
-        "name": "DarkBlue Pegasus"
+        "image": "https://blockhorses.github.io/BlockHorses/api/horse/37.svg", 
+        "name": "Pink Winged Unicorn"
       }

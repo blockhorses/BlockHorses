@@ -26,9 +26,11 @@ app.route('/BlockHorses/api/horse', main)
 app.mount('div')
 
 
-},{"./templates/horses.js":38,"./templates/main.js":39,"choo":8,"choo/html":7}],2:[function(require,module,exports){
-(function (global){
+},{"./templates/horses.js":40,"./templates/main.js":41,"choo":8,"choo/html":7}],2:[function(require,module,exports){
+(function (global){(function (){
 'use strict';
+
+var objectAssign = require('object-assign');
 
 // compare and isBuffer taken from https://github.com/feross/buffer/blob/680e9e5e488f22aac27599a57dc844a6315928dd/index.js
 // original notice:
@@ -71,6 +73,8 @@ function isBuffer(b) {
 }
 
 // based on node assert, original notice:
+// NB: The URL to the CommonJS spec is kept just for tradition.
+//     node-assert has evolved a lot since then, both in API and behavior.
 
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
 //
@@ -511,6 +515,18 @@ assert.doesNotThrow = function(block, /*optional*/error, /*optional*/message) {
 
 assert.ifError = function(err) { if (err) throw err; };
 
+// Expose a strict only variant of assert
+function strict(value, message) {
+  if (!value) fail(value, true, message, '==', strict);
+}
+assert.strict = objectAssign(strict, assert, {
+  equal: assert.strictEqual,
+  deepEqual: assert.deepStrictEqual,
+  notEqual: assert.notStrictEqual,
+  notDeepEqual: assert.notDeepStrictEqual
+});
+assert.strict.strict = assert.strict;
+
 var objectKeys = Object.keys || function (obj) {
   var keys = [];
   for (var key in obj) {
@@ -519,8 +535,8 @@ var objectKeys = Object.keys || function (obj) {
   return keys;
 };
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"util/":5}],3:[function(require,module,exports){
+}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"object-assign":30,"util/":5}],3:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -553,7 +569,7 @@ module.exports = function isBuffer(arg) {
     && typeof arg.readUInt8 === 'function';
 }
 },{}],5:[function(require,module,exports){
-(function (process,global){
+(function (process,global){(function (){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -1141,8 +1157,8 @@ function hasOwnProperty(obj, prop) {
   return Object.prototype.hasOwnProperty.call(obj, prop);
 }
 
-}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":4,"_process":29,"inherits":3}],6:[function(require,module,exports){
+}).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./support/isBuffer":4,"_process":31,"inherits":3}],6:[function(require,module,exports){
 var assert = require('assert')
 var LRU = require('nanolru')
 
@@ -1185,7 +1201,7 @@ function newCall (Cls) {
   return new (Cls.bind.apply(Cls, arguments)) // eslint-disable-line
 }
 
-},{"assert":12,"nanolru":20}],7:[function(require,module,exports){
+},{"assert":12,"nanolru":21}],7:[function(require,module,exports){
 module.exports = require('nanohtml')
 
 },{"nanohtml":17}],8:[function(require,module,exports){
@@ -1461,7 +1477,7 @@ Choo.prototype._setCache = function (state) {
   }
 }
 
-},{"./component/cache":6,"assert":12,"document-ready":9,"nanobus":13,"nanohref":14,"nanomorph":21,"nanoquery":24,"nanoraf":25,"nanorouter":26,"nanotiming":28,"scroll-to-anchor":31,"xtend":34}],9:[function(require,module,exports){
+},{"./component/cache":6,"assert":12,"document-ready":9,"nanobus":13,"nanohref":14,"nanomorph":22,"nanoquery":25,"nanoraf":26,"nanorouter":27,"nanotiming":29,"scroll-to-anchor":33,"xtend":36}],9:[function(require,module,exports){
 'use strict'
 
 module.exports = ready
@@ -1541,7 +1557,9 @@ module.exports = function (h, opts) {
           } else {
             p.push([ OPEN, arg ])
           }
-        } else {
+        } else if (xstate === COMMENT && opts.comments) {
+          reg += String(arg)
+        } else if (xstate !== COMMENT) {
           p.push([ VAR, xstate, arg ])
         }
         parts.push.apply(parts, p)
@@ -1674,7 +1692,7 @@ module.exports = function (h, opts) {
           state = TEXT
         } else if (state === COMMENT && /-$/.test(reg) && c === '-') {
           if (opts.comments) {
-            res.push([ATTR_VALUE,reg.substr(0, reg.length - 1)],[CLOSE])
+            res.push([ATTR_VALUE,reg.substr(0, reg.length - 1)])
           }
           reg = ''
           state = TEXT
@@ -1769,6 +1787,7 @@ module.exports = function (h, opts) {
     if (typeof x === 'function') return x
     else if (typeof x === 'string') return x
     else if (x && typeof x === 'object') return x
+    else if (x === null || x === undefined) return x
     else return concat('', x)
   }
 }
@@ -1983,7 +2002,7 @@ Nanobus.prototype._emit = function (arr, eventName, data, uuid) {
   }
 }
 
-},{"assert":12,"nanotiming":28,"remove-array-items":30}],14:[function(require,module,exports){
+},{"assert":12,"nanotiming":29,"remove-array-items":32}],14:[function(require,module,exports){
 var assert = require('assert')
 
 var safeExternalLink = /(noopener|noreferrer) (noopener|noreferrer)/
@@ -2029,6 +2048,8 @@ function href (cb, root) {
 }
 
 },{"assert":12}],15:[function(require,module,exports){
+'use strict'
+
 var trailingNewlineRegex = /\n[\s]+$/
 var leadingNewlineRegex = /^\n[\s]+/
 var trailingSpaceRegex = /[\s]+$/
@@ -2080,7 +2101,7 @@ module.exports = function appendChild (el, childs) {
 
       // We didn't have a text node yet, create one
       } else {
-        node = document.createTextNode(node)
+        node = el.ownerDocument.createTextNode(node)
         el.appendChild(node)
         lastChild = node
       }
@@ -2130,7 +2151,7 @@ module.exports = function appendChild (el, childs) {
           VERBATIM_TAGS.indexOf(nodeName) === -1) {
           value = lastChild.nodeValue
             .replace(leadingNewlineRegex, '')
-            .replace(trailingNewlineRegex, '')
+            .replace(trailingNewlineRegex, ' ')
             .replace(multiSpaceRegex, ' ')
 
           // Remove empty text nodes, append otherwise
@@ -2139,13 +2160,12 @@ module.exports = function appendChild (el, childs) {
           } else {
             lastChild.nodeValue = value
           }
-        // Trim the child nodes if the current node is not a node
-        // where all whitespace must be preserved
+        // Trim the child nodes but preserve the appropriate whitespace
         } else if (VERBATIM_TAGS.indexOf(nodeName) === -1) {
           value = lastChild.nodeValue
             .replace(leadingSpaceRegex, ' ')
             .replace(leadingNewlineRegex, '')
-            .replace(trailingNewlineRegex, '')
+            .replace(trailingNewlineRegex, ' ')
             .replace(multiSpaceRegex, ' ')
           lastChild.nodeValue = value
         }
@@ -2162,6 +2182,8 @@ module.exports = function appendChild (el, childs) {
 }
 
 },{}],16:[function(require,module,exports){
+'use strict'
+
 module.exports = [
   'async', 'autofocus', 'autoplay', 'checked', 'controls', 'default',
   'defaultchecked', 'defer', 'disabled', 'formnovalidate', 'hidden',
@@ -2170,6 +2192,18 @@ module.exports = [
 ]
 
 },{}],17:[function(require,module,exports){
+module.exports = require('./dom')(document)
+
+},{"./dom":19}],18:[function(require,module,exports){
+'use strict'
+
+module.exports = [
+  'indeterminate'
+]
+
+},{}],19:[function(require,module,exports){
+'use strict'
+
 var hyperx = require('hyperx')
 var appendChild = require('./append-child')
 var SVG_TAGS = require('./svg-tags')
@@ -2182,107 +2216,112 @@ var XLINKNS = 'http://www.w3.org/1999/xlink'
 
 var COMMENT_TAG = '!--'
 
-function nanoHtmlCreateElement (tag, props, children) {
-  var el
+module.exports = function (document) {
+  function nanoHtmlCreateElement (tag, props, children) {
+    var el
 
-  // If an svg tag, it needs a namespace
-  if (SVG_TAGS.indexOf(tag) !== -1) {
-    props.namespace = SVGNS
-  }
-
-  // If we are using a namespace
-  var ns = false
-  if (props.namespace) {
-    ns = props.namespace
-    delete props.namespace
-  }
-
-  // If we are extending a builtin element
-  var isCustomElement = false
-  if (props.is) {
-    isCustomElement = props.is
-    delete props.is
-  }
-
-  // Create the element
-  if (ns) {
-    if (isCustomElement) {
-      el = document.createElementNS(ns, tag, { is: isCustomElement })
-    } else {
-      el = document.createElementNS(ns, tag)
+    // If an svg tag, it needs a namespace
+    if (SVG_TAGS.indexOf(tag) !== -1) {
+      props.namespace = SVGNS
     }
-  } else if (tag === COMMENT_TAG) {
-    return document.createComment(props.comment)
-  } else if (isCustomElement) {
-    el = document.createElement(tag, { is: isCustomElement })
-  } else {
-    el = document.createElement(tag)
-  }
 
-  // Create the properties
-  for (var p in props) {
-    if (props.hasOwnProperty(p)) {
-      var key = p.toLowerCase()
-      var val = props[p]
-      // Normalize className
-      if (key === 'classname') {
-        key = 'class'
-        p = 'class'
-      }
-      // The for attribute gets transformed to htmlFor, but we just set as for
-      if (p === 'htmlFor') {
-        p = 'for'
-      }
-      // If a property is boolean, set itself to the key
-      if (BOOL_PROPS.indexOf(key) !== -1) {
-        if (val === 'true') val = key
-        else if (val === 'false') continue
-      }
-      // If a property prefers being set directly vs setAttribute
-      if (key.slice(0, 2) === 'on' || DIRECT_PROPS.indexOf(key) !== -1) {
-        el[p] = val
+    // If we are using a namespace
+    var ns = false
+    if (props.namespace) {
+      ns = props.namespace
+      delete props.namespace
+    }
+
+    // If we are extending a builtin element
+    var isCustomElement = false
+    if (props.is) {
+      isCustomElement = props.is
+      delete props.is
+    }
+
+    // Create the element
+    if (ns) {
+      if (isCustomElement) {
+        el = document.createElementNS(ns, tag, { is: isCustomElement })
       } else {
-        if (ns) {
-          if (p === 'xlink:href') {
-            el.setAttributeNS(XLINKNS, p, val)
-          } else if (/^xmlns($|:)/i.test(p)) {
-            // skip xmlns definitions
-          } else {
-            el.setAttributeNS(null, p, val)
-          }
+        el = document.createElementNS(ns, tag)
+      }
+    } else if (tag === COMMENT_TAG) {
+      return document.createComment(props.comment)
+    } else if (isCustomElement) {
+      el = document.createElement(tag, { is: isCustomElement })
+    } else {
+      el = document.createElement(tag)
+    }
+
+    // Create the properties
+    for (var p in props) {
+      if (props.hasOwnProperty(p)) {
+        var key = p.toLowerCase()
+        var val = props[p]
+        // Normalize className
+        if (key === 'classname') {
+          key = 'class'
+          p = 'class'
+        }
+        // The for attribute gets transformed to htmlFor, but we just set as for
+        if (p === 'htmlFor') {
+          p = 'for'
+        }
+        // If a property is boolean, set itself to the key
+        if (BOOL_PROPS.indexOf(key) !== -1) {
+          if (String(val) === 'true') val = key
+          else if (String(val) === 'false') continue
+        }
+        // If a property prefers being set directly vs setAttribute
+        if (key.slice(0, 2) === 'on' || DIRECT_PROPS.indexOf(key) !== -1) {
+          el[p] = val
         } else {
-          el.setAttribute(p, val)
+          if (ns) {
+            if (p === 'xlink:href') {
+              el.setAttributeNS(XLINKNS, p, val)
+            } else if (/^xmlns($|:)/i.test(p)) {
+              // skip xmlns definitions
+            } else {
+              el.setAttributeNS(null, p, val)
+            }
+          } else {
+            el.setAttribute(p, val)
+          }
         }
       }
     }
+
+    appendChild(el, children)
+    return el
   }
 
-  appendChild(el, children)
-  return el
-}
-
-function createFragment (nodes) {
-  var fragment = document.createDocumentFragment()
-  for (var i = 0; i < nodes.length; i++) {
-    if (typeof nodes[i] === 'string') nodes[i] = document.createTextNode(nodes[i])
-    fragment.appendChild(nodes[i])
+  function createFragment (nodes) {
+    var fragment = document.createDocumentFragment()
+    for (var i = 0; i < nodes.length; i++) {
+      if (nodes[i] == null) continue
+      if (Array.isArray(nodes[i])) {
+        fragment.appendChild(createFragment(nodes[i]))
+      } else {
+        if (typeof nodes[i] === 'string') nodes[i] = document.createTextNode(nodes[i])
+        fragment.appendChild(nodes[i])
+      }
+    }
+    return fragment
   }
-  return fragment
+
+  var exports = hyperx(nanoHtmlCreateElement, {
+    comments: true,
+    createFragment: createFragment
+  })
+  exports.default = exports
+  exports.createComment = nanoHtmlCreateElement
+  return exports
 }
 
-module.exports = hyperx(nanoHtmlCreateElement, {
-  comments: true,
-  createFragment: createFragment
-})
-module.exports.default = module.exports
-module.exports.createElement = nanoHtmlCreateElement
+},{"./append-child":15,"./bool-props":16,"./direct-props":18,"./svg-tags":20,"hyperx":11}],20:[function(require,module,exports){
+'use strict'
 
-},{"./append-child":15,"./bool-props":16,"./direct-props":18,"./svg-tags":19,"hyperx":11}],18:[function(require,module,exports){
-module.exports = [
-  'indeterminate'
-]
-
-},{}],19:[function(require,module,exports){
 module.exports = [
   'svg', 'altGlyph', 'altGlyphDef', 'altGlyphItem', 'animate', 'animateColor',
   'animateMotion', 'animateTransform', 'circle', 'clipPath', 'color-profile',
@@ -2300,7 +2339,7 @@ module.exports = [
   'tspan', 'use', 'view', 'vkern'
 ]
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = LRU
 
 function LRU (opts) {
@@ -2438,7 +2477,7 @@ LRU.prototype.evict = function () {
   this.remove(this.tail)
 }
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 var assert = require('nanoassert')
 var morph = require('./lib/morph')
 
@@ -2470,16 +2509,17 @@ function nanomorph (oldTree, newTree, options) {
   // }
   assert.equal(typeof oldTree, 'object', 'nanomorph: oldTree should be an object')
   assert.equal(typeof newTree, 'object', 'nanomorph: newTree should be an object')
-  assert.notEqual(
-    newTree.nodeType,
-    11,
-    'nanomorph: newTree should have one root node (which is not a DocumentFragment)'
-  )
 
   if (options && options.childrenOnly) {
     updateChildren(newTree, oldTree)
     return oldTree
   }
+
+  assert.notEqual(
+    newTree.nodeType,
+    11,
+    'nanomorph: newTree should have one root node (which is not a DocumentFragment)'
+  )
 
   return walk(newTree, oldTree)
 }
@@ -2499,13 +2539,17 @@ function walk (newNode, oldNode) {
     return null
   } else if (newNode.isSameNode && newNode.isSameNode(oldNode)) {
     return oldNode
-  } else if (newNode.tagName !== oldNode.tagName) {
+  } else if (newNode.tagName !== oldNode.tagName || getComponentId(newNode) !== getComponentId(oldNode)) {
     return newNode
   } else {
     morph(newNode, oldNode)
     updateChildren(newNode, oldNode)
     return oldNode
   }
+}
+
+function getComponentId (node) {
+  return node.dataset ? node.dataset.nanomorphComponentId : undefined
 }
 
 // Update the children of elements
@@ -2598,7 +2642,7 @@ function same (a, b) {
   return false
 }
 
-},{"./lib/morph":23,"nanoassert":12}],22:[function(require,module,exports){
+},{"./lib/morph":24,"nanoassert":12}],23:[function(require,module,exports){
 module.exports = [
   // attribute events (can be set with attributes)
   'onclick',
@@ -2636,13 +2680,16 @@ module.exports = [
   'onfocus',
   'onblur',
   'oninput',
+  'onanimationend',
+  'onanimationiteration',
+  'onanimationstart',
   // other common events
   'oncontextmenu',
   'onfocusin',
   'onfocusout'
 ]
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 var events = require('./events')
 var eventsLength = events.length
 
@@ -2762,6 +2809,15 @@ function updateInput (newNode, oldNode) {
   updateAttribute(newNode, oldNode, 'checked')
   updateAttribute(newNode, oldNode, 'disabled')
 
+  // The "indeterminate" property can not be set using an HTML attribute.
+  // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox
+  if (newNode.indeterminate !== oldNode.indeterminate) {
+    oldNode.indeterminate = newNode.indeterminate
+  }
+
+  // Persist file value since file inputs can't be changed programatically
+  if (oldNode.type === 'file') return
+
   if (newValue !== oldValue) {
     oldNode.setAttribute('value', newValue)
     oldNode.value = newValue
@@ -2808,7 +2864,7 @@ function updateAttribute (newNode, oldNode, name) {
   }
 }
 
-},{"./events":22}],24:[function(require,module,exports){
+},{"./events":23}],25:[function(require,module,exports){
 var reg = /([^?=&]+)(=([^&]*))?/g
 var assert = require('assert')
 
@@ -2819,13 +2875,20 @@ function qs (url) {
 
   var obj = {}
   url.replace(/^.*\?/, '').replace(reg, function (a0, a1, a2, a3) {
-    obj[decodeURIComponent(a1)] = decodeURIComponent(a3)
+    var value = decodeURIComponent(a3)
+    var key = decodeURIComponent(a1)
+    if (obj.hasOwnProperty(key)) {
+      if (Array.isArray(obj[key])) obj[key].push(value)
+      else obj[key] = [obj[key], value]
+    } else {
+      obj[key] = value
+    }
   })
 
   return obj
 }
 
-},{"assert":12}],25:[function(require,module,exports){
+},{"assert":12}],26:[function(require,module,exports){
 'use strict'
 
 var assert = require('assert')
@@ -2862,7 +2925,7 @@ function nanoraf (render, raf) {
   }
 }
 
-},{"assert":12}],26:[function(require,module,exports){
+},{"assert":12}],27:[function(require,module,exports){
 var assert = require('assert')
 var wayfarer = require('wayfarer')
 
@@ -2918,7 +2981,7 @@ function pathname (routename, isElectron) {
   return decodeURI(routename.replace(suffix, '').replace(normalize, '/'))
 }
 
-},{"assert":12,"wayfarer":32}],27:[function(require,module,exports){
+},{"assert":12,"wayfarer":34}],28:[function(require,module,exports){
 var assert = require('assert')
 
 var hasWindow = typeof window !== 'undefined'
@@ -2975,7 +3038,7 @@ NanoScheduler.prototype.setTimeout = function (cb) {
 
 module.exports = createScheduler
 
-},{"assert":12}],28:[function(require,module,exports){
+},{"assert":12}],29:[function(require,module,exports){
 var scheduler = require('nanoscheduler')()
 var assert = require('assert')
 
@@ -3025,7 +3088,99 @@ function noop (cb) {
   }
 }
 
-},{"assert":12,"nanoscheduler":27}],29:[function(require,module,exports){
+},{"assert":12,"nanoscheduler":28}],30:[function(require,module,exports){
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+'use strict';
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+},{}],31:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -3211,7 +3366,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],30:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict'
 
 /**
@@ -3240,7 +3395,7 @@ module.exports = function removeItems (arr, startIdx, removeCount) {
   arr.length = len
 }
 
-},{}],31:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 module.exports = scrollToAnchor
 
 function scrollToAnchor (anchor, options) {
@@ -3252,7 +3407,7 @@ function scrollToAnchor (anchor, options) {
   }
 }
 
-},{}],32:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 var assert = require('assert')
 var trie = require('./trie')
 
@@ -3331,7 +3486,7 @@ function Wayfarer (dft) {
   }
 }
 
-},{"./trie":33,"assert":2}],33:[function(require,module,exports){
+},{"./trie":35,"assert":2}],35:[function(require,module,exports){
 var mutate = require('xtend/mutable')
 var assert = require('assert')
 var xtend = require('xtend')
@@ -3469,7 +3624,7 @@ Trie.prototype.mount = function (route, trie) {
   }
 }
 
-},{"assert":2,"xtend":34,"xtend/mutable":35}],34:[function(require,module,exports){
+},{"assert":2,"xtend":36,"xtend/mutable":37}],36:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -3490,7 +3645,7 @@ function extend() {
     return target
 }
 
-},{}],35:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -3509,7 +3664,7 @@ function extend(target) {
     return target
 }
 
-},{}],36:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 // import choo's template helper
 var html = require('choo/html')
 
@@ -3606,6 +3761,11 @@ module.exports = function (horse) {
     return html `
     <svg xmlns="http://www.w3.org/2000/svg" height="128" width="128" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink">
     
+    <!--
+        Copyright 2019 Andrew B Coathup https://github.com/abcoathup
+        BlockHorses https://github.com/blockhorses/BlockHorses
+    -->
+
     <g id="shoes" style="stroke:${horse.shoes};">
         <line x1="7" y1="31" x2="9" y2="31" />
         <line x1="18" y1="31" x2="20" y2="31" />
@@ -3690,7 +3850,7 @@ module.exports = function (horse) {
     ${zebra}
 </svg>`
 }
-},{"choo/html":7}],37:[function(require,module,exports){
+},{"choo/html":7}],39:[function(require,module,exports){
 var html = require('choo/html')
 
 var horseSvg = require('./horse.js')
@@ -3702,7 +3862,7 @@ module.exports = function (horse, index, horses) {
     
     `;
 }
-},{"./horse.js":36,"choo/html":7}],38:[function(require,module,exports){
+},{"./horse.js":38,"choo/html":7}],40:[function(require,module,exports){
 module.exports = function () {
 
     return horses = [
@@ -3740,11 +3900,153 @@ module.exports = function () {
         {color: 'DarkCyan', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
         {color: 'DarkGoldenRod', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
         {color: 'Brown', mane: 'Gold', tail: 'Green', shoes: 'Black', eye: 'Red'},
-        {color: 'Aquamarine', mane: 'CornSilk', tail: 'CornSilk', shoes: 'GoldenRod', eye: 'Grey', unicorn: 'GoldenRod', wings: 'GoldenRod'}
+        {color: 'Aquamarine', mane: 'CornSilk', tail: 'CornSilk', shoes: 'GoldenRod', eye: 'Grey', unicorn: 'GoldenRod', wings: 'GoldenRod'},
+        {color: 'AliceBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'AntiqueWhite', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Aqua', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Aquamarine', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Azure', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Beige', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Bisque', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Black', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'BlanchedAlmond', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Blue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'BlueViolet', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Brown', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'BurlyWood', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'CadetBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Chartreuse', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Chocolate', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Coral', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'CornflowerBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Cornsilk', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Crimson', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Cyan', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkCyan', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkGoldenRod', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkGrey', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkKhaki', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkMagenta', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkOliveGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkOrange', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkOrchid', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkRed', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkSalmon', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkSeaGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkSlateBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkSlateGrey', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkTurquoise', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DarkViolet', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DeepPink', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DeepSkyBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DimGrey', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'DodgerBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'FireBrick', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'FloralWhite', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'ForestGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Fuchsia', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Gainsboro', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'GhostWhite', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Gold', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'GoldenRod', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Green', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'GreenYellow', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Grey', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'HoneyDew', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'HotPink', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'IndianRed', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Indigo', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Ivory', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Khaki', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Lavender', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LavenderBlush', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LawnGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LemonChiffon', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightCoral', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightCyan', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightGoldenRodYellow', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightGrey', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightPink', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightSalmon', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightSeaGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightSkyBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightSlateGrey', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightSteelBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LightYellow', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Lime', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'LimeGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Linen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Magenta', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Maroon', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MediumAquaMarine', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MediumBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MediumOrchid', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MediumPurple', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MediumSeaGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MediumSlateBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MediumSpringGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MediumTurquoise', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MediumVioletRed', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MidnightBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MintCream', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'MistyRose', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Moccasin', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'NavajoWhite', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Navy', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'OldLace', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Olive', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'OliveDrab', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Orange', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'OrangeRed', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Orchid', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'PaleGoldenRod', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'PaleGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'PaleTurquoise', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'PaleVioletRed', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'PapayaWhip', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'PeachPuff', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Peru', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Pink', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Plum', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'PowderBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Purple', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'RebeccaPurple', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Red', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'RosyBrown', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'RoyalBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'SaddleBrown', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Salmon', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'SandyBrown', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'SeaGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'SeaShell', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Sienna', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Silver', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'SkyBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'SlateBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'SlateGray', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'SlateGrey', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Snow', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'SpringGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'SteelBlue', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Tan', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Teal', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Thistle', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Tomato', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Turquoise', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Violet', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Wheat', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'White', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'WhiteSmoke', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'Yellow', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
+{color: 'YellowGreen', mane: 'Black', tail: 'Black', shoes: 'Black', eye: 'Pink'},
         
     ]
 }
-},{}],39:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 // import choo's template helper
 var html = require('choo/html')
 
@@ -3814,4 +4116,4 @@ module.exports = function (state, emit) {
     
     </div>`
 }
-},{"./horseTemplate.js":37,"choo/html":7}]},{},[1]);
+},{"./horseTemplate.js":39,"choo/html":7}]},{},[1]);
