@@ -1,0 +1,29 @@
+
+    {
+        "attributes": [
+          {
+            "trait_type": "color", 
+            "value": "LightGrey"
+          }, 
+          {
+            "trait_type": "eyes", 
+            "value": "Pink"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "Black"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "Black"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "Grey"
+          }
+        ], 
+        "description": "Block Horse", 
+        "external_url": "https://blockhorses.github.io/BlockHorses", 
+        "image": "https://blockhorses.github.io/BlockHorses/api/horse/83.svg", 
+        "name": "LightGrey Horse"
+      }

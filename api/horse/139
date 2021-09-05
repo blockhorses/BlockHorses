@@ -1,0 +1,29 @@
+
+    {
+        "attributes": [
+          {
+            "trait_type": "color", 
+            "value": "SlateGrey"
+          }, 
+          {
+            "trait_type": "eyes", 
+            "value": "Pink"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "DarkSlateBlue"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "DarkSlateBlue"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "Black"
+          }
+        ], 
+        "description": "Block Horse", 
+        "external_url": "https://blockhorses.github.io/BlockHorses", 
+        "image": "https://blockhorses.github.io/BlockHorses/api/horse/139.svg", 
+        "name": "SlateGrey Pegasus"
+      }

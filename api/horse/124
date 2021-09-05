@@ -1,0 +1,29 @@
+
+    {
+        "attributes": [
+          {
+            "trait_type": "color", 
+            "value": "PowderBlue"
+          }, 
+          {
+            "trait_type": "eyes", 
+            "value": "Pink"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "SkyBlue"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "SkyBlue"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "Black"
+          }
+        ], 
+        "description": "Block Horse", 
+        "external_url": "https://blockhorses.github.io/BlockHorses", 
+        "image": "https://blockhorses.github.io/BlockHorses/api/horse/124.svg", 
+        "name": "PowderBlue Pegasus"
+      }
