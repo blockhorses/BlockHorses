@@ -20,6 +20,10 @@
           {
             "trait_type": "shoes", 
             "value": "GoldenRod"
+          },
+          {
+            "trait_type": "species", 
+            "value": "Winged Unicorn"
           }
         ], 
         "description": "Block Horse", 
