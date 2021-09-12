@@ -20,10 +20,14 @@
           {
             "trait_type": "shoes", 
             "value": "Black"
+          },
+          {
+            "trait_type": "species", 
+            "value": "Unicorn"
           }
         ], 
         "description": "Block Horse", 
         "external_url": "https://blockhorses.github.io/BlockHorses", 
         "image": "https://blockhorses.github.io/BlockHorses/api/horse/64.svg", 
-        "name": "GoldenRod Horse"
+        "name": "GoldenRod Unicorn"
       }
