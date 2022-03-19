@@ -255,6 +255,11 @@ module.exports = function () {
         { color: 'DarkOrange', mane: 'RebeccaPurple', tail: 'RebeccaPurple', shoes: 'DarkSlateGrey', eye: 'Aquamarine' },
         { color: 'DarkBlue', mane: 'RosyBrown', tail: 'RosyBrown', shoes: 'DarkSlateGrey', eye: 'Aquamarine' },
         { color: 'SeaShell', mane: 'RoyalBlue', tail: 'RoyalBlue', shoes: 'DarkSlateGrey', eye: 'Aquamarine' },
-        { color: 'Plum', mane: 'SaddleBrown', tail: 'SaddleBrown', shoes: 'DarkSlateGrey', eye: 'Aquamarine' }
+        { color: 'Plum', mane: 'SaddleBrown', tail: 'SaddleBrown', shoes: 'DarkSlateGrey', eye: 'Aquamarine' },
+        { color: 'Linen', mane: 'Salmon', tail: 'Salmon', shoes: 'DarkSlateGrey', eye: 'Aquamarine' },
+        { color: 'HotPink', mane: 'Sienna', tail: 'Sienna', shoes: 'DarkSlateGrey', eye: 'Aquamarine' },
+        { color: 'WhiteSmoke', mane: 'Silver', tail: 'Silver', shoes: 'DarkSlateGrey', eye: 'Aquamarine', unicorn: 'GoldenRod', wings: 'LightSteelBlue' },
+        { color: 'Bisque', mane: 'SlateBlue', tail: 'SlateBlue', shoes: 'DarkSlateGrey', eye: 'Aquamarine' },
+        { color: 'Beige', mane: 'SlateGray', tail: 'SlateGray', shoes: 'DarkSlateGrey', eye: 'Aquamarine' }
     ]
 }
