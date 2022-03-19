@@ -1,0 +1,33 @@
+
+    {
+        "attributes": [
+          {
+            "trait_type": "color", 
+            "value": "CornflowerBlue"
+          }, 
+          {
+            "trait_type": "eyes", 
+            "value": "Aquamarine"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "DarkMagenta"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "DarkMagenta"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "DarkSlateGrey"
+          },
+          {
+            "trait_type": "species", 
+            "value": "Horse"
+          }
+        ], 
+        "description": "Block Horse", 
+        "external_url": "https://blockhorses.github.io/BlockHorses", 
+        "image": "https://blockhorses.github.io/BlockHorses/api/horse/180.svg", 
+        "name": "CornflowerBlue Horse"
+      }
