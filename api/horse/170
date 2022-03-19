@@ -1,0 +1,33 @@
+
+    {
+        "attributes": [
+          {
+            "trait_type": "color", 
+            "value": "IndianRed"
+          }, 
+          {
+            "trait_type": "eyes", 
+            "value": "Aquamarine"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "CornflowerBlue"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "CornflowerBlue"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "DarkSlateGrey"
+          },
+          {
+            "trait_type": "species", 
+            "value": "Pegasus"
+          }
+        ], 
+        "description": "Block Horse", 
+        "external_url": "https://blockhorses.github.io/BlockHorses", 
+        "image": "https://blockhorses.github.io/BlockHorses/api/horse/170.svg", 
+        "name": "IndianRed Pegasus"
+      }

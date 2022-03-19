@@ -1,0 +1,33 @@
+
+    {
+        "attributes": [
+          {
+            "trait_type": "color", 
+            "value": "MistyRose"
+          }, 
+          {
+            "trait_type": "eyes", 
+            "value": "Aquamarine"
+          },
+          {
+            "trait_type": "mane", 
+            "value": "MintCream"
+          },
+          {
+            "trait_type": "tail", 
+            "value": "MintCream"
+          },
+          {
+            "trait_type": "shoes", 
+            "value": "DarkSlateGrey"
+          },
+          {
+            "trait_type": "species", 
+            "value": "Horse"
+          }
+        ], 
+        "description": "Block Horse", 
+        "external_url": "https://blockhorses.github.io/BlockHorses", 
+        "image": "https://blockhorses.github.io/BlockHorses/api/horse/236.svg", 
+        "name": "MistyRose Horse"
+      }
